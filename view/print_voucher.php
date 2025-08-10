@@ -42,6 +42,24 @@ echo '
 
 $timestamp =  date("Y-m-d H:i:s");
 
+function expiryDate($validity, $timestamp){
+  $pattern = '/(\d+)([smhdw])/';
+  if(preg_match($pattern, $validity, $matches)){
+    $value = (int)$matches[1];
+    $unit = $matches[2];
+    switch($unit){
+      case 's': $seconds = $value; break;
+      case 'm': $seconds = $value * 60; break;
+      case 'h': $seconds = $value * 3600; break;
+      case 'd': $seconds = $value * 86400; break;
+      case 'w': $seconds = $value * 604800; break;
+      default: $seconds = 0; break;
+    }
+    return date("Y-m-d", strtotime($timestamp) + $seconds);
+  }
+  return "";
+}
+
 $logo = "./assets/img/logo-" . $m_user . ".png";
 if (file_exists($logo)) {
   $logo = "./assets/img/logo-" . $m_user . ".png?".date("YmdHis");
@@ -170,10 +188,10 @@ include_once("config/connection.php");
         })();
       </script>
       ";
-   
-    $num = $i + 1;
 
-  
+    $num = $i + 1;
+      $expiry = expiryDate($validity, $timestamp);
+
       $template = file_get_contents("$row");
      echo str_replace("%username%", $username,
           str_replace("%password%", $password,
@@ -181,20 +199,21 @@ include_once("config/connection.php");
           str_replace("%limitBytesTotal%", $datalimit,
           str_replace("%limitUptime%", $timelimit,
           str_replace("%validity%", $validity,
+          str_replace("%expiryDate%", $expiry,
           str_replace("%price%", $getsprice,
           str_replace("%comment%", $comment,
           str_replace("%#%", $num,
           str_replace("%dnsName%", $dnsname,
           str_replace("%hotspotName%", $hotspotname,
-          str_replace("%currency%", $currency, 
-          str_replace("%qrCode%", $qrcode, 
-          str_replace("%qrCodeRed%", $qrcodeR, 
+          str_replace("%currency%", $currency,
+          str_replace("%qrCode%", $qrcode,
+          str_replace("%qrCodeRed%", $qrcodeR,
           str_replace("%qrCodeGreen%", $qrcodeG, 
-          str_replace("%qrCodeBlue%", $qrcodeB, 
+          str_replace("%qrCodeBlue%", $qrcodeB,
           str_replace("%phone%", $phone,
           str_replace("%logo%", $logo,
           str_replace("%timeStamp%", $timestamp,
-          $template)))))))))))))))))));
+          $template))))))))))))))))))));
      
   
     }

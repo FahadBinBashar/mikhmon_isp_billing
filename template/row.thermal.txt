@@ -34,9 +34,9 @@
 							</td>
 						</tr>
 
-						<tr>
-							<td colspan="2" style="border-top: 1px solid black;font-weight:bold; font-size:14px"><span class="validity">%validity%</span> <span class="timelimit">%limitUptime%</span> <span>%limitBytesTotal%</span></td>
-						</tr>
+                                                <tr>
+                                                        <td colspan="2" style="border-top: 1px solid black;font-weight:bold; font-size:14px"><span class="validity">%validity%</span> <span class="timelimit">%limitUptime%</span> <span>%limitBytesTotal%</span> <span class="expiryDate">%expiryDate%</span></td>
+                                                </tr>
 						<tr>
 							<td><span class="price">%price%</span></td>
 						</tr>
@@ -46,13 +46,16 @@
 								%comment%
 							</td>
 						</tr>
-						<tr>
-							<td colspan="2" style="font-weight:bold; font-size:12px">Login: http://%dnsName%</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
+                                                <tr>
+                                                        <td colspan="2" style="font-weight:bold; font-size:12px">Login: http://%dnsName%</td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan="2" style="font-weight:bold; font-size:12px">Support: %phone%</td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+                        </td>
+                </tr>
 	</tbody>
 </table>
 <script>
