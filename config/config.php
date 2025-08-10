@@ -1,0 +1,3 @@
+<?php if(substr($_SERVER["REQUEST_URI"], -10) == "config.php"){header("Location:./");}; 
+$data['mikhmon'] = array ('1'=>'mikhmon<|<mikhmon','mikhmon>|>aWNlbA==');
+$data['session929'] = array ('1'=>'session929!192.168.88.1:8728','session929@|@admin','session929#|#','session929%','session929^','session929&Rp','session929*','session929(','session929)','session929=30','session929@!@disable','session929#!#');
