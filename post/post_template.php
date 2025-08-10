@@ -12,21 +12,36 @@ include_once("../core/routeros_api.class.php");
 if(isset($_POST['router_']) && isset($_SESSION["mikhmon"])){
    $do = $_POST['do'];    
     if($do == "saveTemplate"){
-  		$template = $_POST['_template'];
-		$t_file = "../template/".$_POST['file_'];
-		if (is_file($t_file) && !is_writable($t_file)) {
-			    $mess->message = "Error, cannot write config file, please check folder or file permissions.";
-	    		echo json_encode($mess);
-    	}else{
+                $template = $_POST['_template'];
+                $t_file = "../template/".$_POST['file_'];
+                if (is_file($t_file) && !is_writable($t_file)) {
+                            $mess->message = "Error, cannot write config file, please check folder or file permissions.";
+                        echo json_encode($mess);
+        }else{
 
-	        $handle = fopen($t_file, 'w') or die('Cannot open file:  ' . $t_file);
-	        fwrite($handle, $template);
-	      
-			$mess = array(
-				"message" => "Saved"
-			  );
-	    		echo json_encode($mess);
-	    } 
+                $handle = fopen($t_file, 'w') or die('Cannot open file:  ' . $t_file);
+                fwrite($handle, $template);
+
+                        $mess = array(
+                                "message" => "Saved"
+                          );
+                        echo json_encode($mess);
+            }
+    }elseif($do == "saveLayout"){
+                $layout = $_POST['layout_'];
+                $t_file = "../template/".$_POST['file_'];
+                if (is_file($t_file) && !is_writable($t_file)) {
+                            $mess->message = "Error, cannot write config file, please check folder or file permissions.";
+                        echo json_encode($mess);
+        }else{
+                $handle = fopen($t_file, 'w') or die('Cannot open file:  ' . $t_file);
+                fwrite($handle, $layout);
+
+                        $mess = array(
+                                "message" => "Saved"
+                          );
+                        echo json_encode($mess);
+            }
     }
 
 }else{
