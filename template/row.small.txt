@@ -16,11 +16,14 @@
 			<td class="up" style="border: 1px solid black; font-weight:bold;display:none;">%password%</td>
 		</tr>
 	</tbody>
-	<tfoot>
-		<tr style="color: black; font-size: 10px; text-align: center;">
-			<th colspan="2" ><span class="validity">%validity%</span> <span class="timelimit">%limitUptime%</span> <span>%limitBytesTotal%</span> <span class="price">%price%</span></th>
-		</tr>
-	</tfoot>
+        <tfoot>
+                <tr style="color: black; font-size: 10px; text-align: center;">
+                        <th colspan="2" ><span class="validity">%validity%</span> <span class="timelimit">%limitUptime%</span> <span>%limitBytesTotal%</span> <span class="expiryDate">%expiryDate%</span> <span class="price">%price%</span></th>
+                </tr>
+                <tr style="color: black; font-size: 10px; text-align: center;">
+                        <th colspan="2">Support: %phone%</th>
+                </tr>
+        </tfoot>
 </table>
 <script>
 	if("%username%" == "%password%"){
